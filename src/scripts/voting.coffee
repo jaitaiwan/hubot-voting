@@ -34,6 +34,16 @@ module.exports = (robot) ->
 
       msg.send "Vote started"
       sendChoices(msg)
+      
+  robot.respond /add choice (.+)$/i, (msg) ->
+    if robot.voting.votes?
+      addChoice(msg.match[1])
+      msg.send "Choices have been changed:"
+      sendChoices(msg)
+      
+    else
+      msg.send "You need a vote to start before adding choices"
+      
 
   robot.respond /end vote/i, (msg) ->
     if robot.voting.votes?
@@ -81,6 +91,9 @@ module.exports = (robot) ->
 
   createChoices = (rawChoices) ->
     robot.voting.choices = rawChoices.split(/, /)
+    
+  addChoice = (choice) ->
+    robot.voting.choices.push(choice)
 
   sendChoices = (msg, results = null) ->
 
