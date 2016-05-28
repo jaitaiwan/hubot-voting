@@ -1,6 +1,6 @@
 {
   "author": "joshingly",
-  "name": "hubot-voting",
+  "name": "hubot-better-voting",
   "version": "1.0.0",
   "description": "A voting script for hubot",
   "main": "./src/index.coffee",
@@ -15,7 +15,7 @@
     "vote"
   ],
   "bugs": {
-    "url": "https://github.com/joshingly/hubot-voting/issues"
+    "url": "https://github.com/jaitaiwan/hubot-voting/issues"
   },
-  "homepage": "https://github.com/joshingly/hubot-voting"
+  "homepage": "https://github.com/jaitaiwan/hubot-voting"
 }
