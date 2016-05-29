@@ -30,12 +30,16 @@ module.exports = (robot) ->
       sendChoices (msg)
     else
       robot.voting.votes = {}
+      robot.voting.stopChoices = false
       createChoices msg.match[1]
 
       msg.send "Vote started"
       sendChoices(msg)
       
   robot.respond /add choice (.+)$/i, (msg) ->
+    if robot.voting.stopChoices
+      return msg.send "Adding choices is not allowed"
+
     if robot.voting.votes?
       addChoice(msg.match[1])
       msg.send "Choices have been changed:"
@@ -43,7 +47,10 @@ module.exports = (robot) ->
       
     else
       msg.send "You need a vote to start before adding choices"
-      
+  
+  robot.respond /stop choices/i, (msg) ->
+    robot.voting.stopChoices = true
+    msg.send "Adding choices has been turned off for this vote"    
 
   robot.respond /end vote/i, (msg) ->
     if robot.voting.votes?
@@ -59,6 +66,7 @@ module.exports = (robot) ->
 
       delete robot.voting.votes
       delete robot.voting.choices
+      delete robot.voting.stopChoices
     else
       msg.send "There is not a vote to end"
 

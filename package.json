@@ -1,12 +1,12 @@
 {
   "author": "joshingly",
   "name": "hubot-better-voting",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A voting script for hubot",
   "main": "./src/index.coffee",
   "repository": {
     "type": "git",
-    "url": "https://github.com/joshingly/hubot-voting.git"
+    "url": "https://github.com/jaitaiwan/hubot-voting.git"
   },
   "license": "MIT",
   "keywords": [
